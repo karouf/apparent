@@ -35,4 +35,6 @@ group :development, :test do
 	gem 'cucumber-rails'
 	gem 'capybara'
 	gem 'database_cleaner'
+	gem 'factory_girl', ">= 1.3.3"
+	gem 'factory_girl_rails', ">= 1.0.1"
 end
