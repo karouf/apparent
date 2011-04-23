@@ -35,4 +35,42 @@ describe CategoriesController do
       
     end
   end
+  
+  describe '#update' do
+    before(:each) do
+      @category = Factory(:category)
+    end
+    
+    describe "with valid params" do
+      before(:each) do
+        Category.any_instance.stub(:update_attributes).and_return(true)
+      end
+      
+      it "updates the category" do
+        Category.any_instance.should_receive(:update_attributes)
+        put 'update', :id => @category.id
+      end
+      
+      it "redirects to the categories page" do
+        put 'update', :id => @category.id
+        response.should redirect_to(categories_path)
+      end
+    end
+    
+    describe "with invalid parameters" do
+      before(:each) do
+        Category.any_instance.stub(:update_attributes).and_return(false)
+        put 'update', :id => @category.id
+      end
+      
+      it "sets an instance variable containing the category" do
+        assigns[:category].should be_an_instance_of(Category)
+      end
+      
+      it "renders the 'edit' template" do
+        response.should render_template(:edit)
+      end
+      
+    end
+  end
 end
