@@ -1,3 +1,7 @@
+<h2>Categories</h2>
+
+<%= link_to 'Create a new category', new_category_path %>
+
 <ol>
 <% @categories.each do |category| %>
 	<li><%= category.name %></li>

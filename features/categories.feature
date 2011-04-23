@@ -12,3 +12,16 @@ Scenario: List categories
 	And I am on the categories page
   Then I should see "Helmet"
 	And I should see "Shoulder pads"
+	
+Scenario: Create a category
+	Given there is the following category records
+		| name					|
+    | Helmet				|
+	And I am on the categories page
+	Then I should see "Helmet"
+	When I go to the new category page
+	And I fill in "Name" with "Shoulder pads"
+	And I press "Create"
+	Then I should be on the categories page
+	And I should see "Helmet"
+	And I should see "Shoulder pads"

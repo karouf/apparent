@@ -31,7 +31,7 @@ gem 'sqlite3'
 # end
 
 group :development, :test do
-	gem "rspec-rails", ">= 2.5.0"
+	gem "rspec-rails", ">= 2.6.0rc2"
 	gem 'cucumber-rails'
 	gem 'capybara'
 	gem 'database_cleaner'
