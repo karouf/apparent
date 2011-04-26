@@ -30,4 +30,10 @@ class CategoriesController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    Category.destroy(params[:id])
+    
+    redirect_to categories_path
+  end
 end

@@ -73,4 +73,20 @@ describe CategoriesController do
       
     end
   end
+  
+  describe "#destroy" do
+    before(:each) do
+      @category = Factory(:category)
+      delete 'destroy', :id => @category.id
+    end
+    
+    it "destroys the category" do
+      lambda{ Category.find(@category.id) }.should raise_error(ActiveRecord::RecordNotFound)
+    end
+    
+    it "redirects to the categories page" do
+      response.should redirect_to(categories_path)
+    end
+    
+  end
 end

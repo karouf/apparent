@@ -36,3 +36,12 @@ Scenario: Edit a category
 	And I press "Update"
 	Then I should be on the categories page
 	And I should see "Shoulder pads"
+
+Scenario: Delete a category
+	Given there is the following category records
+		| name					|
+	  | Helmet				|
+	And I am on the categories page
+	When I follow "delete" within "li"
+	Then I should be on the categories page
+	And I should not see "Helmet"
